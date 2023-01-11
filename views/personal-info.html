@@ -1,0 +1,117 @@
+<include href="views/header.html"></include>
+
+<div class="container mt-4 mb-5" id="main">
+
+        <form action="#" method="post" class=" row">
+
+            <div class="col-sm-12 text-left ">
+                <h1>Purr-sonal Info</h1>
+                <hr/>
+            </div>
+
+            <!--basic info-->
+                <div class="col-sm-8 text-left ">
+
+                    <label class="font-weight-bold form-label" for="fname">First Name</label>
+                    <!-- Display an error if there is one -->
+                    <check if="{{ isset(@errors['fname']) }}">
+                        <span class="err font-weight-bold">{{ @errors['fname'] }}</span>
+                    </check>
+                    <input class="form-control" type="text" name="fname" id="fname" value="{{ @fname }}" aria-describedby="fname">
+
+
+
+                    <label class="font-weight-bold form-label" for="lname">Last Name</label>
+                    <!-- Display an error if there is one -->
+                    <check if="{{ isset(@errors['lname']) }}">
+                        <span class="err font-weight-bold">{{ @errors['lname'] }}</span><br>
+                    </check>
+                    <input class="form-control" type="text" name="lname" id="lname" value="{{ @lname }}" aria-describedby="lname">
+
+
+
+                    <label class="font-weight-bold form-label" for="age">Age</label>
+                    <!-- Display an error if there is one -->
+                    <check if="{{ isset(@errors['age']) }}">
+                        <span class="err font-weight-bold">{{ @errors['age'] }}</span><br>
+                    </check>
+                    <input class="form-control" type="text" name="age" id="age" value="{{ @age }}" aria-describedby="age">
+
+
+
+            <!--coat type-->
+
+                    <!-- get coat -->
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label text-left font-weight-bold ml-0 pl-0">Coat Type</label>
+                        <div class="col-sm-8">
+                            <repeat group="{{ @coats }}" value="{{ @coat }}">
+                                <label><input class="ml-3" type="radio" name="coat" value="{{ @coat }}"
+                                    <check if="{{ @coat == @userCoat }}">checked</check>>
+                                     {{ ucfirst(@coat) }}
+                                </label>
+                            </repeat>
+
+                        </div>
+
+                        <!-- Display an error if there is one -->
+                        <check if="{{ isset(@errors['coat']) }}">
+                            <span class="err font-weight-bold">{{ @errors['coat'] }}</span>
+                        </check>
+                    </div>
+
+
+                    <label class="font-weight-bold form-label" for="number"> Owner Phone Number </label>
+                    <!-- Display an error if there is one -->
+                    <check if="{{ isset(@errors['number']) }}">
+                        <span class="err font-weight-bold">{{ @errors['number'] }}</span><br>
+                    </check>
+                    <input class="form-control" type="text" name="number" id="number" value="{{ @number }}" aria-describedby="number">
+
+                    <!-- premium upgrade -->
+
+                    <label class="font-weight-bold form-label mt-2 mb-0" for="premium"> Premium Membership </label><br>
+                    <label class="checkbox-inline lead">
+                        <input class="mr-2 mb-2" type="checkbox" value="premium" name="premium" id="premium">
+                            Upgrade to Paw-Some Member Status!</label>
+
+
+
+            </div>
+
+            <!--disclaimer box-->
+            <div class="col-sm-4">
+                <div class="container-fluid" id="notify">
+                    <p><em class="font-weight-bold">Note:</em> All information entered is protected by our <a
+                            href="home.html">privacy policy</a>
+                        . Profile information can only be viewed by others with your permission</p>
+                </div>
+            </div>
+
+            <div class="col-sm-10">
+                <a></a>
+            </div>
+
+                <!-- button-->
+            <div class="col-sm-2 text-right mt-2">
+                <input class="form-control btn btn-info mb-3"
+                       type="submit" value="Next >">
+            </div>
+
+        </form>
+
+    </div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

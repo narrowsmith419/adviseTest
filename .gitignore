@@ -1,0 +1,6 @@
+# this contains all of the files and folders I want Git to ignore
+# ignore files that I did not create or edit
+
+composer.lock
+tmp/
+vendor/

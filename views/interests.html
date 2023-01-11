@@ -1,0 +1,91 @@
+<include href="views/header.html"></include>
+
+
+<div class="container mt-4 mb-5" id="main">
+
+    <form action="#" method="post" class="row">
+
+        <div class="col-sm-12 text-left ">
+
+            <h1>Interests</h1>
+            <hr/>
+
+        </div>
+
+        <!--indoor interests-->
+        <div class="col-sm-12 text-center">
+            <p class="font-weight-bold text-left"> In-door Interests </p>
+        </div>
+        <div class="container">
+            <div class="mt-0">
+                <div class="col-sm-7 text-center">
+                    <div class="row">
+
+                        <!-- for error -->
+                            <repeat group="{{ @in }}" value="{{ @ins }}">
+                                <label><input class="ml-3" type="checkbox" name="in[]" value="{{ @ins }}"> {{ @ins }} </label><br>
+                            </repeat>
+
+                            <!--Display an error if there is one-->
+                            <check if="{{ isset(@errors['ins']) }}">
+                                <span class="err">{{ @errors['ins'] }}</span>
+                            </check>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--outdoor interests-->
+        <div class="col-sm-12 text-center">
+            <p class="font-weight-bold text-left"> Out-door Interests </p>
+        </div>
+        <div class="container">
+            <div class="mt-0">
+                <div class="col-sm-7 text-center">
+                    <div class="row">
+
+                        <!-- for error -->
+                        <repeat group="{{ @out }}" value="{{ @outs }}">
+                            <label><input class="ml-3" type="checkbox" name="out[]" value="{{ @outs }}"> {{ @outs }}</label><br>
+                        </repeat>
+
+                        <!--Display an error if there is one-->
+                        <check if="{{ isset(@errors['outs']) }}">
+                            <span class="err">{{ @errors['outs'] }}</span>
+                        </check>
+                        <!-- for error -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- button-->
+        <div class="col-md-10 text-left">
+            <a></a>
+        </div>
+        <div class="col-md-2 text-right mt-2">
+            <input class="form-control btn btn-info mb-3"
+                   type="submit" value="Next >">
+        </div>
+
+    </form>
+
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>
