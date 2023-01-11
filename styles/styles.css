@@ -1,0 +1,55 @@
+nav{
+    background-color: darkgray;
+}
+
+body{
+
+    padding-bottom: 15px;
+
+}
+
+#main{
+
+    border-style: solid;
+    border-width: 2px;
+    border-color: lightgray;
+}
+
+#box{
+
+    border-style: solid;
+    border-width: 2px;
+    border-color: lightgray;
+}
+
+#notify{
+
+    background-color: lightgray;
+    border-radius: 0.5rem;
+    border-style: solid;
+    border-width: 2px;
+    border-color: dimgray;
+
+}
+
+#quotes{
+
+    /*border-style: solid;
+    border-width: 1.25px;
+    border-color: darkgray;*/
+}
+
+img{
+    border-radius: 0.5rem;
+    height: 100%;
+    width: 100%;
+}
+
+#frame{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.err{
+    color: red;
+}
