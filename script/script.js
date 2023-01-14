@@ -1,11 +1,9 @@
-//Create a Unique six (6) character identifier (TOKEN)
-import {v4 as uuidv4} from 'uuid';
-let test = uuidv4();
-console.log(test);
-console.log("Hello World");
+//Create a Unique six (6) character identifier (TOKEN) / Populate token field with it
+let longToken = crypto.randomUUID();
+let token = longToken.substring(0,6);
 
-function createUniqueToken(){
-    let tokenLength = 6;
-    let tokenCharacters = ['a','b','c','d','e','f','g','h','i'];
-    let token = document.getElementById("token");
-}
+let tokenField = document.getElementById("token");
+tokenField.innerHTML = token;
+
+
+
