@@ -17,7 +17,7 @@ class Controller
         echo $view->render('views/home.html');
     }
 
-    function personal()
+    function schedule()
     {
         //Initialize input variables
         $fname = "";
@@ -117,7 +117,7 @@ class Controller
 
         $view = new Template();
 
-        echo $view->render('views/personal-info.html');
+        echo $view->render('views/schedule.html');
     }
 
     function profile()

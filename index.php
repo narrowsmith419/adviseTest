@@ -30,10 +30,10 @@ $f3->route('GET /', function(){
 
 });
 
-//define personal-info route
-$f3->route('GET|POST /personal', function($f3){
+//define schedule planner route
+$f3->route('GET|POST /schedule', function($f3){
 
-    $GLOBALS['con']->personal();
+    $GLOBALS['con']->schedule();
 
 });
 
