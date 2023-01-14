@@ -2,107 +2,84 @@
 
 <div class="container mt-4 mb-5" id="main">
 
-        <form action="#" method="post" class=" row">
+    <form action="#" method="post" class="text-center row">
 
-            <div class="col-sm-12 text-left ">
-                <h1>Create a Plan</h1>
-                <h2>Token #</h2>
-                <h2 id="token" for="token" name="token"></h2>
-                <hr/>
-            </div>
+        <div class="col-sm-12 text-left ">
+            <h1 id="pageTitle">Create a Plan</h1>
+            <h2>Token #</h2>
+            <h2 id="token"></h2>
+            <hr/>
+        </div>
 
-            <!--basic info-->
-                <div class="col-sm-8 text-left ">
+        <div class="col-sm-12 my-4 mx-auto text-center container">
+            <div class="row text-center mx-auto">
 
-                    <label class="font-weight-bold form-label" for="fname">First Name</label>
+                <!--fall-->
+                <div class="col-sm-5 text-left fallBox mx-auto">
+
+                    <label class="font-weight-bold form-label" for="fall">FALL</label>
                     <!-- Display an error if there is one -->
                     <check if="{{ isset(@errors['fname']) }}">
-                        <span class="err font-weight-bold">{{ @errors['fname'] }}</span>
-                    </check>
-                    <input class="form-control" type="text" name="fname" id="fname" value="{{ @fname }}" aria-describedby="fname">
+                        <span class="err font-weight-bold">{{ @errors['fall'] }}</span></check>
+                    <input class="form-control" type="text" name="fall" id="fall" value="{{ @fall }}"
+                           aria-describedby="fall">
+                    <textarea class="form-control my-2 pt-1" id="fallText" name="fallText"
+                              rows="6">{{ @fallText }}</textarea>
 
-
-
-                    <label class="font-weight-bold form-label" for="lname">Last Name</label>
-                    <!-- Display an error if there is one -->
-                    <check if="{{ isset(@errors['lname']) }}">
-                        <span class="err font-weight-bold">{{ @errors['lname'] }}</span><br>
-                    </check>
-                    <input class="form-control" type="text" name="lname" id="lname" value="{{ @lname }}" aria-describedby="lname">
-
-
-
-                    <label class="font-weight-bold form-label" for="age">Age</label>
-                    <!-- Display an error if there is one -->
-                    <check if="{{ isset(@errors['age']) }}">
-                        <span class="err font-weight-bold">{{ @errors['age'] }}</span><br>
-                    </check>
-                    <input class="form-control" type="text" name="age" id="age" value="{{ @age }}" aria-describedby="age">
-
-
-
-            <!--coat type-->
-
-                    <!-- get coat -->
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label text-left font-weight-bold ml-0 pl-0">Coat Type</label>
-                        <div class="col-sm-8">
-                            <repeat group="{{ @coats }}" value="{{ @coat }}">
-                                <label><input class="ml-3" type="radio" name="coat" value="{{ @coat }}"
-                                    <check if="{{ @coat == @userCoat }}">checked</check>>
-                                     {{ ucfirst(@coat) }}
-                                </label>
-                            </repeat>
-
-                        </div>
-
-                        <!-- Display an error if there is one -->
-                        <check if="{{ isset(@errors['coat']) }}">
-                            <span class="err font-weight-bold">{{ @errors['coat'] }}</span>
-                        </check>
-                    </div>
-
-
-                    <label class="font-weight-bold form-label" for="number"> Owner Phone Number </label>
-                    <!-- Display an error if there is one -->
-                    <check if="{{ isset(@errors['number']) }}">
-                        <span class="err font-weight-bold">{{ @errors['number'] }}</span><br>
-                    </check>
-                    <input class="form-control" type="text" name="number" id="number" value="{{ @number }}" aria-describedby="number">
-
-                    <!-- premium upgrade -->
-
-                    <label class="font-weight-bold form-label mt-2 mb-0" for="premium"> Premium Membership </label><br>
-                    <label class="checkbox-inline lead">
-                        <input class="mr-2 mb-2" type="checkbox" value="premium" name="premium" id="premium">
-                            Upgrade to Paw-Some Member Status!</label>
-
-
-
-            </div>
-
-            <!--disclaimer box-->
-            <div class="col-sm-4">
-                <div class="container-fluid" id="notify">
-                    <p><em class="font-weight-bold">Note:</em> All information entered is protected by our <a
-                            href="home.html">privacy policy</a>
-                        . Profile information can only be viewed by others with your permission</p>
                 </div>
+
+                <!--winter-->
+                <div class="col-sm-5 text-left winterBox mx-auto">
+
+                    <label class="font-weight-bold form-label" for="winter">WINTER</label>
+                    <!-- Display an error if there is one -->
+                    <check if="{{ isset(@errors['fname']) }}">
+                        <span class="err font-weight-bold">{{ @errors['winter'] }}</span></check>
+                    <input class="form-control" type="text" name="winter" id="winter" value="{{ @winter }}"
+                           aria-describedby="winter">
+                    <textarea class="form-control my-2 pt-1" id="winterText" name="winterText" rows="6">{{ @winterText }}</textarea>
+
+                </div>
+
+                <!--spring-->
+                <div class="col-sm-5 text-left springBox mx-auto mt-3">
+
+                    <label class="font-weight-bold form-label" for="spring">SPRING</label>
+                    <!-- Display an error if there is one -->
+                    <check if="{{ isset(@errors['fname']) }}">
+                        <span class="err font-weight-bold">{{ @errors['spring'] }}</span></check>
+                    <input class="form-control" type="text" name="spring" id="spring" value="{{ @spring }}"
+                           aria-describedby="spring">
+                    <textarea class="form-control my-2 pt-1" id="springText" name="springText" rows="6">{{ @springText }}</textarea>
+
+                </div>
+
+                <!--summer-->
+                <div class="col-sm-5 text-left summerBox mx-auto mt-3">
+
+                    <label class="font-weight-bold form-label" for="summer">SUMMER</label>
+                    <!-- Display an error if there is one -->
+                    <check if="{{ isset(@errors['fname']) }}">
+                        <span class="err font-weight-bold">{{ @errors['summer'] }}</span></check>
+                    <input class="form-control" type="text" name="summer" id="summer" value="{{ @summer }}"
+                           aria-describedby="summer">
+                    <textarea class="form-control my-2 pt-1" id="summerText" name="summerText" rows="6">{{ @summerText }}</textarea>
+
+                </div>
+
             </div>
+        </div>
 
-            <div class="col-sm-10">
-                <a></a>
-            </div>
 
-                <!-- button-->
-            <div class="col-sm-2 text-right mt-2">
-                <input class="form-control btn btn-info mb-3"
-                       type="submit" value="Next >">
-            </div>
+        <!-- button-->
+        <div class="col-sm-3 text-right mt-2 ml-auto">
+            <input class="form-control btn btn-info mb-3"
+                   type="submit" value="SAVE PLAN">
+        </div>
 
-        </form>
+    </form>
 
-    </div>
+</div>
 
 <!-- Custom JavaScript -->
 <script src="script/script.js"></script>

@@ -15,6 +15,29 @@ body{
     border-color: lightgray;
 }
 
+.fallBox, .winterBox, .springBox, .summerBox{
+
+    border-style: solid;
+    border-width: 2px;
+    margin: 5px;
+}
+
+.fallBox{
+    border-color: #e8642d;
+}
+
+.winterBox{
+    border-color: #003bc2;
+}
+
+.springBox{
+    border-color: #278000;
+}
+
+.summerBox{
+    border-color: #cea700;
+}
+
 #box{
 
     border-style: solid;
