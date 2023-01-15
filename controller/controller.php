@@ -20,31 +20,28 @@ class Controller
     function schedule()
     {
         //Initialize input variables
-        $fname = "";
-        $lname = "";
-        $age = "";
-        $coat = "";
-        $number = "";
+        $token = "";
+        $fall = "";
+        $fallText = "";
+        $winter = "";
+        $winterText ="";
+        $spring = "";
+        $springText = "";
+        $summer = "";
+        $summerText = "";
 
         //if the form has been posted
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
-
-            $fname = $_POST['fname'];
-            $lname = $_POST['lname'];
-            $age = $_POST['age'];
-            $coat = $_POST['coat'];
-            $number = $_POST['number'];
-
-            //If premium membership was selected
-            if (isset($_POST['premium'])) {
-                //instantiate PremiumMember object
-                $_SESSION['member'] = new PremiumMember();
-            }
-            else{
-                //instantiate member object
-                $_SESSION['member'] = new Member();
-            }
+            $token = $_POST['token'];
+            $fall = $_POST['fall'];
+            $fallText = $_POST['fallText'];
+            $winter = $_POST['winter'];
+            $winterText = $_POST['winterText'];
+            $spring = $_POST['spring'];
+            $springText = $_POST['springText'];
+            $summer = $_POST['summer'];
+            $summerText = $_POST['summerText'];
 
 
             //Validate the data

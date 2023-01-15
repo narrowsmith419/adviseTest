@@ -1,193 +1,199 @@
 <?php
 
 
-class Member
+class Schedule
 {
     //classes and functions go on different lines, decisions and loops, {} same line
-    private $_fname;
-    private $_lname;
-    private $_age;
-    private $_coat;
-    private $_phone;
-    private $_email;
-    private $_state;
-    private $_seekCoat;
-    private $_bio;
+    private $_token;
+    private $_fall;
+    private $_fallText;
+    private $_winter;
+    private $_winterText;
+    private $_spring;
+    private $_springText;
+    private $_summer;
+    private $_summerText;
 
     /**
      * default constructor with default values ( ="" )
      */
-    public function __construct($fname="", $lname="", $age="", $coat="", $phone="")
+    public function __construct($token="", $fall="", $fallText="", $winter="", $winterText="",
+                                $spring="", $springText="", $summer="", $summerText="")
     {
-        $this->_fname = $fname;
-        $this->_lname = $lname;
-        $this->_age = $age;
-        $this->_coat = $coat;
-        $this->_phone = $phone;
+        $this->_token = $token;
+        $this->_fall = $fall;
+        $this->_fallText = $fallText;
+        $this->_winter = $winter;
+        $this->_winterText = $winterText;
+        $this->_spring = $spring;
+        $this->_springText = $springText;
+        $this->_summer = $summer;
+        $this->_summerText = $summerText;
     }
 
-
     /**
-     * return first name
+     * return token
      * @return string
      */
-    public function getFirstName()
+    public function getToken()
     {
-        return $this->_fname;
+        return $this->_token;
     }
 
     /**
-     * set first name
-     * @param string $fname
+     * set token
+     * @param string $token
      */
-    public function setFirstName($fname)
+    public function setToken($token)
     {
-        $this->_fname = $fname;
+        $this->_token = $token;
     }
 
     /**
-     * return last name
+     * return fall classes
      * @return string
      */
-    public function getLastName()
+    public function getFall()
     {
-        return $this->_lname;
+        return $this->_fall;
     }
 
     /**
-     * set last name
-     * @param string $lname
+     * set fall classes
+     * @param string $fall
      */
-    public function setLastName($lname)
+    public function setFall($fall)
     {
-        $this->_lname = $lname;
+        $this->_fall = $fall;
     }
 
     /**
-     * return age
-     * @return int
-     */
-    public function getAge()
-    {
-        return $this->_age;
-    }
-
-    /**
-     * set age
-     * @param int $age
-     */
-    public function setAge($age)
-    {
-        $this->_age = $age;
-    }
-
-    /**
-     * return coat type
+     * return fallText
      * @return string
      */
-    public function getCoat()
+    public function getFallText()
     {
-        return $this->_coat;
+        return $this->_fallText;
     }
 
     /**
-     * set coat type
-     * @param string $coat
+     * set fallText
+     * @param string $fallText
      */
-    public function setCoat($coat)
+    public function setFallText($fallText)
     {
-        $this->_coat = $coat;
+        $this->_fallText = $fallText;
     }
 
     /**
-     * return phone number
+     * return winter classes
      * @return string
      */
-    public function getPhone()
+    public function getWinter()
     {
-        return $this->_phone;
+        return $this->_winter;
     }
 
     /**
-     * set phone number
-     * @param string $phone
+     * set winter classes
+     * @param string $winter
      */
-    public function setPhone($phone)
+    public function setWinter($winter)
     {
-        $this->_phone = $phone;
+        $this->_winter = $winter;
     }
 
     /**
-     * return email
+     * return winterText
      * @return string
      */
-    public function getEmail()
+    public function getWinterText()
     {
-        return $this->_email;
+        return $this->_winterText;
     }
 
     /**
-     * set email
-     * @param string $email
+     * set winterText
+     * @param string $winterText
      */
-    public function setEmail($email)
+    public function setWinterText($winterText)
     {
-        $this->_email = $email;
+        $this->_winterText = $winterText;
     }
 
     /**
-     * return state
+     * return spring classes
      * @return string
      */
-    public function getState()
+    public function getSpring()
     {
-        return $this->_state;
+        return $this->_spring;
     }
 
     /**
-     * set state
-     * @param string $state
+     * set spring classes
+     * @param string $spring
      */
-    public function setState($state)
+    public function setSpring($spring)
     {
-        $this->_state = $state;
+        $this->_spring = $spring;
     }
 
     /**
-     * return seeking coat
+     * return springText
      * @return string
      */
-    public function getSeekCoat()
+    public function getSpringText()
     {
-        return $this->_seekCoat;
+        return $this->_springText;
     }
 
     /**
-     * set seeking coat
-     * @param string $seekCoat
+     * set springText
+     * @param string $springText
      */
-    public function setSeekCoat($seekCoat)
+    public function setSpringText($springText)
     {
-        $this->_seekCoat = $seekCoat;
+        $this->_springText = $springText;
     }
 
     /**
-     * return bio
+     * return summer classes
      * @return string
      */
-    public function getBio()
+    public function getSummer()
     {
-        return $this->_bio;
+        return $this->_summer;
     }
 
     /**
-     * set bio
-     * @param string $bio
+     * set summer classes
+     * @param string $summer
      */
-    public function setBio($bio)
+    public function setSummer($summer)
     {
-        $this->_bio = $bio;
+        $this->_summer = $summer;
     }
+
+    /**
+     * return summerText
+     * @return string
+     */
+    public function getSummerText()
+    {
+        return $this->_summerText;
+    }
+
+    /**
+     * set summerText
+     * @param string $summerText
+     */
+    public function setSummerText($summerText)
+    {
+        $this->_summerText = $summerText;
+    }
+
+
 
 
 
