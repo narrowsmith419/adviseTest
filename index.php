@@ -37,20 +37,6 @@ $f3->route('GET|POST /schedule', function($f3){
 
 });
 
-//define profile route
-$f3->route('GET|POST /profile', function($f3){
-
-    $GLOBALS['con']->profile();
-
-});
-
-//define interests route for premium member
-$f3->route('GET|POST /interests', function($f3){
-
-    $GLOBALS['con']->interests();
-
-});
-
 //define summary route
 $f3->route('GET /summary', function(){
 

@@ -21,6 +21,10 @@ body{
     background-color: #b6b3b3;
 }
 
+.tokenInput{
+    display: none;
+}
+
 .fallBox, .winterBox, .springBox, .summerBox{
 
     border-style: solid;

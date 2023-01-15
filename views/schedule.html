@@ -8,7 +8,9 @@
             <h1 id="pageTitle">Create a Plan</h1>
             <div class="tokenStyle">
                 <span >Token #</span>
-                <span id="token"></span>
+                <span id="tokenDisplay" type="text">{{ @token }}</span>
+                <input class="form-control tokenInput" type="text" name="token" id="token" value="{{ @token }}"
+                       aria-describedby="token">
             </div>
             <hr/>
         </div>

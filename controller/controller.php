@@ -43,6 +43,19 @@ class Controller
             $summer = $_POST['summer'];
             $summerText = $_POST['summerText'];
 
+            //instantiate schedule object
+            $_SESSION['schedule'] = new Schedule();
+
+            //Add the data to the session variable
+            $_SESSION['schedule']->setToken($token);
+            $_SESSION['schedule']->setFall($fall);
+            $_SESSION['schedule']->setFallText($fallText);
+            $_SESSION['schedule']->setWinter($winter);
+            $_SESSION['schedule']->setWinterText($winterText);
+            $_SESSION['schedule']->setSpring($spring);
+            $_SESSION['schedule']->setSpringText($springText);
+            $_SESSION['schedule']->setSummer($summer);
+            $_SESSION['schedule']->setSummerText($summerText);
 
             //Redirect user to home page if there are no errors
             if (empty($this->_f3->get('errors'))) {
@@ -66,152 +79,6 @@ class Controller
         echo $view->render('views/schedule.html');
     }
 
-    function profile()
-    {
-        //Initialize input variables
-        $email = "";
-        $seekCoat = "";
-        $biography = "";
-        $state = "";
-
-        //if the form has been posted
-        if($_SERVER['REQUEST_METHOD'] == 'POST')
-        {
-            $email = $_POST['email'];
-
-            //add data to the session variable
-            $_SESSION['state'] = $_POST['state'];
-
-            /*maybe*/
-            $state = $_POST['state'];
-            $_SESSION['member']->setState($state);
-
-            /*$_SESSION['biography'] = $_POST['biography'];*/
-            $seekCoat = $_POST['seekCoat'];
-            $biography = $_POST['biography'];
-
-            //Validate the data
-            if(Validator::validEmail($email)) {
-
-                //Add the data to the session variable
-                $_SESSION['member']->setEmail($email);
-
-            }
-            else {
-
-                //Set an error
-                $this->_f3->set('errors["email"]', 'Please enter a valid Email');
-            }
-
-            if(Validator::validCoat($seekCoat)) {
-
-                //Add the data to the session variable
-                $_SESSION['member']->setSeekCoat($seekCoat);
-
-            }
-
-            if(strlen($biography) > 1){
-
-                //Add the data to the session variable
-                $_SESSION['member']->setBio($biography);
-
-            }
-
-
-            //Redirect user to next page if there are no errors
-            //this is where we check if user is premium or not
-
-            if (empty($this->_f3->get('errors'))) {
-
-                if($_SESSION['member'] instanceof PremiumMember) {
-                    $this->_f3->reroute('interests');
-                }
-                else{
-                    $this->_f3->reroute('summary');
-                }
-            }
-
-        }
-
-        $this->_f3->set('email', $email);
-        $this->_f3->set('states', DataLayer::getStates());
-        $this->_f3->set('userCoat', $seekCoat);
-        $this->_f3->set('coats', DataLayer::getCoat());
-        $this->_f3->set('biography', $biography);
-
-        $view = new Template();
-
-        echo $view->render('views/profile-info.html');
-
-    }
-
-    function interests()
-    {
-        //Get the interests from the model and add to F3 hive
-        $this->_f3->set('in', DataLayer::getIndoor());
-        $this->_f3->set('out', DataLayer::getOutdoor());
-
-        //if the form has been posted
-        if($_SERVER['REQUEST_METHOD'] == 'POST')
-        {
-
-            //Add the data to the session variable
-            //If indoor interests were selected
-            if (isset($_POST['in'])) {
-
-                $in = $_POST['in'];
-
-                //If interests are valid
-                if (Validator::validIndoor($in)) {
-
-                    $_SESSION['member']->setInDoorInterests($in);
-
-                }
-                else {
-                    $this->_f3->set("errors['ins']", "Invalid selection");
-                }
-            }
-            else {
-
-                $in = "No indoor interests selected";
-            }
-
-            //Add the data to the session variable
-            //If outdoor interests were selected
-            if (isset($_POST['out'])) {
-
-                $out = $_POST['out'];
-
-                //If interests are valid
-                if (Validator::validOutDoor($out)) {
-
-                    $_SESSION['member']->setOutdoorInterests($out);
-                }
-                else {
-                    $this->_f3->set("errors['outs']", "Invalid selection");
-                }
-            }
-            else {
-                $out = "No outdoor interests selected";
-            }
-
-            //Redirect user to summary page
-            if (empty($this->_f3->get('errors'))) {
-                $_SESSION['in'] = $in;
-                $_SESSION['out'] = $out;
-                $this->_f3->reroute('summary');
-            }
-
-        }
-
-        $view = new Template();
-
-        echo $view->render('views/interests.html');
-
-    }
-
-
-
     function summary()
     {
 
@@ -224,7 +91,7 @@ class Controller
         session_destroy();
     }
 
-    function admin()
+    /*function admin()
     {
 
         //Get the data from the model
@@ -233,7 +100,7 @@ class Controller
 
         $view = new Template();
         echo $view->render('views/admin.html');
-    }
+    }*/
 
 
 }
