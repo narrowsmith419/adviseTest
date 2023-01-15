@@ -21,7 +21,7 @@ $con = new Controller($f3);
 $dataLayer = new DataLayer();
 
 //instantiate new schedule object
-$schedule = new Schedule(); 
+$schedule = new Schedule();
 
 //define default route
 $f3->route('GET /', function(){

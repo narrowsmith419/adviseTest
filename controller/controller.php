@@ -1,6 +1,6 @@
 <?php
 
-//  328/dating/controller/controller.php
+//  328/adviseTest/controller/controller.php
 
 class Controller
 {
@@ -44,73 +44,22 @@ class Controller
             $summerText = $_POST['summerText'];
 
 
-            //Validate the data
-            if(Validator::validName($fname)) {
-
-                //Add the data to the session variable
-                $_SESSION['member']->setFirstName($fname);
-            }
-            else {
-
-                //Set an error
-                $this->_f3->set('errors["fname"]', 'Please enter a valid First Name');
-            }
-
-            //Validate the data
-            if(Validator::validName($lname)) {
-
-                //Add the data to the session variable
-                $_SESSION['member']->setLastName($lname);
-            }
-            else {
-
-                //Set an error
-                $this->_f3->set('errors["lname"]', 'Please enter a valid Last Name');
-            }
-
-            //Validate the data
-            if(Validator::validAge($age)) {
-
-                //Add the data to the session variable
-                $_SESSION['member']->setAge($age);
-            }
-            else {
-
-                //Set an error
-                $this->_f3->set('errors["age"]', 'Please enter a valid Age');
-            }
-
-            if(Validator::validCoat($coat)) {
-
-                //Add the data to the session variable
-                $_SESSION['member']->setCoat($coat);
-            }
-
-            //Validate the data
-            if(Validator::validPhone($number)) {
-
-                //Add the data to the session variable
-                $_SESSION['member']->setPhone($number);
-            }
-            else {
-
-                //Set an error
-                $this->_f3->set('errors["number"]', 'Please enter a valid phone number');
-            }
-
-            //Redirect user to next page if there are no errors
+            //Redirect user to home page if there are no errors
             if (empty($this->_f3->get('errors'))) {
-                $this->_f3->reroute('profile');
+                $this->_f3->reroute('home');
             }
 
         }
 
-        $this->_f3->set('fname', $fname);
-        $this->_f3->set('lname', $lname);
-        $this->_f3->set('userCoat', $coat);
-        $this->_f3->set('coats', DataLayer::getCoat());
-        $this->_f3->set('age', $age);
-        $this->_f3->set('number', $number);
+        $this->_f3->set('token', $token);
+        $this->_f3->set('fall', $fall);
+        $this->_f3->set('fallText', $fallText);
+        $this->_f3->set('winter', $winter);
+        $this->_f3->set('winterText', $winterText);
+        $this->_f3->set('spring', $spring);
+        $this->_f3->set('springText', $springText);
+        $this->_f3->set('summer', $summer);
+        $this->_f3->set('summerText', $summerText);
 
         $view = new Template();
 
