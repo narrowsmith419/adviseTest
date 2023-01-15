@@ -46,7 +46,7 @@ class Controller
 
             //Redirect user to home page if there are no errors
             if (empty($this->_f3->get('errors'))) {
-                $this->_f3->reroute('home');
+                $this->_f3->reroute('summary');
             }
 
         }
@@ -215,7 +215,7 @@ class Controller
     function summary()
     {
 
-        $GLOBALS['dataLayer']->insertMember($_SESSION['member']);
+        $GLOBALS['dataLayer']->insertSchedule($_SESSION['schedule']);
 
         $view = new Template();
         echo $view->render('views/summary.html');

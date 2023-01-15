@@ -6,24 +6,23 @@
 
         <div class="col-sm-6 text-left" >
             <div class="container mt-2" id="box">
-                <p class="mt-1">Name: {{ @SESSION.member->getFirstName() }} {{ @SESSION.member->getLastName() }}</p>
+                <p class="mt-1">Token: {{ @SESSION.schedule->getToken() }} </p>
                 <hr/>
-                <p>Coat Type: {{ @SESSION.member->getCoat() }}</p>
+                <p>Fall Classes: {{ @SESSION.schedule->getFall() }}</p>
                 <hr/>
-                <p>Age: {{ @SESSION.member->getAge() }}</p>
+                <p>Fall Notes: {{ @SESSION.schedule->getFallText() }}</p>
                 <hr/>
-                <p>Phone: {{ @SESSION.member->getPhone() }}</p>
+                <p>Winter Classes: {{ @SESSION.schedule->getWinter() }}</p>
                 <hr/>
-                <p>Email: {{ @SESSION.member->getEmail() }}</p>
+                <p>Winter Notes: {{ @SESSION.schedule->getWinterText() }}</p>
                 <hr/>
-                <p>State: {{ @SESSION.member->getState() }}</p>
+                <p>Spring Classes: {{ @SESSION.schedule->getSpring() }}</p>
                 <hr/>
-                <p>Seeking: {{ @SESSION.member->getSeekCoat() }}</p>
+                <p>Spring Notes: {{ @SESSION.schedule->getSpringText() }}</p>
                 <hr/>
-                <check if=" {{ @SESSION.member instanceOf premiumMember }} ">
-                    <p>Interests: {{ @SESSION.member->inDoorToString() }}  {{ @SESSION.member->outDoorToString() }}</p>
-                </check>
-
+                <p>Summer Classes: {{ @SESSION.schedule->getSummer() }}</p>
+                <hr/>
+                <p>Summer Notes: {{ @SESSION.schedule->getSummerText() }}</p>
             </div>
         </div>
 
@@ -38,7 +37,6 @@
         <div class="col-sm-6 ">
 
             <p class="lead mb-0">Biography</p><br>
-            <p class="mb-4">{{ @SESSION.member->getBio() }}</p>
 
         </div>
 
@@ -48,7 +46,7 @@
         </div>
         <div class="col-sm-4 col-lg-2 text-right mt-2">
             <input class="form-control btn btn-info mb-4"
-                   type="submit" value="Contact Me!">
+                   type="submit" value="SUBMIT SCHEDULE">
         </div>
         <div class="col-sm-4 col-lg-5 text-right">
             <a></a>
