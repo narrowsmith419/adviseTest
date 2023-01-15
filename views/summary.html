@@ -4,8 +4,10 @@
 
     <div class="row">
 
-        <div class="col-sm-6 text-left" >
+        <div class="col-sm-9 text-left mx-auto" >
+
             <div class="container mt-2" id="box">
+                <h2> Schedule Summary </h2>
                 <p class="mt-1">Token: {{ @SESSION.schedule->getToken() }} </p>
                 <hr/>
                 <p>Fall Classes: {{ @SESSION.schedule->getFall() }}</p>
@@ -26,28 +28,15 @@
             </div>
         </div>
 
-        <div class="col-sm-6 text-right mt-2">
-                <img src="images/catshape.jpeg" class="img-fluid" alt="Picture of silhouette of cat">
-        </div>
-
-        <div class="col-sm-6 ">
-            <p></p>
-        </div>
-
-        <div class="col-sm-6 ">
-
-            <p class="lead mb-0">Biography</p><br>
-
-        </div>
 
         <!-- button-->
         <div class="col-sm-4 col-lg-5 text-left">
             <a></a>
         </div>
         <div class="col-sm-4 col-lg-2 text-right mt-2">
-            <input class="form-control btn btn-info mb-4"
-                   type="submit" value="SUBMIT SCHEDULE">
+            <a class="btn btn-info mb-3" href="home" > Home </a>
         </div>
+
         <div class="col-sm-4 col-lg-5 text-right">
             <a></a>
         </div>
