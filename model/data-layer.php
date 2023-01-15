@@ -14,7 +14,7 @@ class DataLayer
         try {
             //Instantiate a PDO database object
             $this->_dbh = new PDO (DB_DSN, DB_USERNAME, DB_PASSWORD);
-            //echo "Connection to database successful!";
+            echo "Connection to database successful!";
         } catch (PDOException $e) {
             echo "Error connecting to DB " . $e->getMessage();
         }
@@ -22,79 +22,47 @@ class DataLayer
     }
 
     /**
-     * insertMember accepts a member object and inserts it into the DB
-     * @param $member Member object
-     * @return string The member_id of the inserted row
+     * insertSchedule accepts a schedule object and inserts it into the DB
+     * @param $schedule Schedule object
+     * @return string The token of the inserted row
      */
-    function insertMember($member)
+    function insertSchedule($schedule)
     {
         //grab parameters
-        $fname = $member->getFirstName();
-        $lname = $member->getLastName();
-        $age = $member->getAge();
-        $coat = $member->getCoat();
-        $phone = $member->getPhone();
-        $email = $member->getEmail();
-        $state = $member->getState();
-        $seekCoat = $member->getSeekCoat();
-        $bio = $member->getBio();
-        $nonPremium = 0;
-        $premium = 1;
+        $token = $schedule->getToken();
+        $fall = $schedule->getFall();
+        $fallText = $schedule->getFallText();
+        $winter = $schedule->getWinter();
+        $winterText = $schedule->getWinterText();
+        $spring = $schedule->getSpring();
+        $springText = $schedule->getSpringText();
+        $summer = $schedule->getSummer();
+        $summerText = $schedule->getSummerText();
 
         //1. Define the query
-        //if premium
-        if ($member instanceof PremiumMember) {
-            $interests = $member->inDoorToString() . $member->outDoorToString();
-
-            $sql = "INSERT INTO Member (fname, lname, age, coat, phone, email, state, seekCoat, bio, premium, interests)
-                VALUES (:fname, :lname, :age, :coat, :phone, :email, :state, :seekCoat, :bio, :premium, :interests)";
+            $sql = "INSERT INTO adviseIt (token, fall, fallNotes, winter, winterNotes, spring, springNotes,
+                      summer, summerNotes)
+                VALUES (:token, :fall, :fallText, :winter, :winterText, :spring, :springText, :summer, :summerText)";
 
             //2. Prepare the statement
             $statement = $this->_dbh->prepare($sql);
 
-
-            //3. Bind the parameters
-            $statement->bindParam(':fname', $fname);
-            $statement->bindParam(':lname', $lname);
-            $statement->bindParam(':age', $age);
-            $statement->bindParam(':coat', $coat);
-            $statement->bindParam(':phone', $phone);
-            $statement->bindParam(':email', $email);
-            $statement->bindParam(':state', $state);
-            $statement->bindParam(':seekCoat', $seekCoat);
-            $statement->bindParam(':bio', $bio);
-            $statement->bindParam(':premium', $premium);
-            $statement->bindParam(':interests', $interests);
-
-
-        } //if nonpremium
-        else {
-            $sql = "INSERT INTO Member (fname, lname, age, coat, phone, email, state, seekCoat, bio, premium)
-                VALUES (:fname, :lname, :age, :coat, :phone, :email, :state, :seekCoat, :bio, :premium)";
-
-            //2. Prepare the statement
-            $statement = $this->_dbh->prepare($sql);
-
-            $statement->bindParam(':fname', $fname);
-            $statement->bindParam(':lname', $lname);
-            $statement->bindParam(':age', $age);
-            $statement->bindParam(':coat', $coat);
-            $statement->bindParam(':phone', $phone);
-            $statement->bindParam(':email', $email);
-            $statement->bindParam(':state', $state);
-            $statement->bindParam(':seekCoat', $seekCoat);
-            $statement->bindParam(':bio', $bio);
-            $statement->bindParam(':premium', $nonPremium);
-
-        }
+            $statement->bindParam(':token', $token);
+            $statement->bindParam(':fall', $fall);
+            $statement->bindParam(':fallText', $fallText);
+            $statement->bindParam(':winter', $winter);
+            $statement->bindParam(':winterText', $winterText);
+            $statement->bindParam(':spring', $spring);
+            $statement->bindParam(':springText', $springText);
+            $statement->bindParam(':summer', $summer);
+            $statement->bindParam(':summerText', $summerText);
 
 
         //4. Execute the query
         $statement->execute();
 
         //5. Process the results (get the primary key)
-        $id = $this->_dbh->lastInsertId();
-        return $id;
+        return $this->_dbh->lastInsertId();
     }
 
 
