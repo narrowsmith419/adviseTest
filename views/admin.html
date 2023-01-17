@@ -4,54 +4,43 @@
 
 <div class="container-fluid my-4 mx-auto" style="overflow: scroll" id="main">
 
-            <h3 class="lead font-weight-bold mt-2">Membership</h3>
+            <h3 class="lead font-weight-bold mt-2">Schedule</h3>
 
             <table class="table" id="tblOrders">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Age</th>
-                        <th scope="col">Coat</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">State</th>
-                        <th scope="col">Seeking</th>
-                        <th scope="col">Bio</th>
-                        <th scope="col">Premium</th>
-                        <th scope="col">Interests</th>
+                        <th scope="col">fall</th>
+                        <th scope="col">fnotes</th>
+                        <th scope="col">winter</th>
+                        <th scope="col">wnotes</th>
+                        <th scope="col">spring</th>
+                        <th scope="col">snotes</th>
+                        <th scope="col">summer</th>
+                        <th scope="col">sumNotes</th>
+                        <th scope="col">date</th>
 
                     </tr>
                 </thead>
 
                 <tbody>
 
-                <repeat group="{{ @members }}" value="{{ @member }}">
+                <!--<repeat group="{{ @schedules }}" value="{{ @schedule }}">-->
                     <tr >
-                        <td>{{ @member['member_id'] }}</td>
-                        <td>{{ @member['fname']." ".@member['lname'] }}</td>
-                        <td>{{ @member['age'] }}</td>
-                        <td>{{ @member['coat'] }}</td>
-                        <td>{{ @member['phone'] }}</td>
-                        <td>{{ @member['email'] }}</td>
-                        <td>{{ @member['state'] }}</td>
-                        <td>{{ @member['seekCoat'] }}</td>
-                        <td>{{ @member['bio'] }}</td>
+                        <td>{{ @schedule['token'] }}</td>
+                        <td>{{ @schedule['fall'] }}</td>
+                        <td>{{ @schedule['fallText'] }}</td>
+                        <td>{{ @schedule['winter'] }}</td>
+                        <td>{{ @schedule['winterText'] }}</td>
+                        <td>{{ @schedule['spring'] }}</td>
+                        <td>{{ @schedule['springText'] }}</td>
+                        <td>{{ @schedule['summer'] }}</td>
+                        <td>{{ @schedule['summerText'] }}</td>
+                        <td>{{ @schedule['date'] }}</td>
 
-                        <!--check if premium or not, checkbox if premium-->
-                        <check if=" {{ @member['premium']=='0' }} ">
-                            <true>
-                                <td><input type="checkbox" name="nonPrem" value="nonPrem"></td>
-                            </true>
-                            <false>
-                                <td><input type="checkbox" name="nonPrem" value="nonPrem" checked></td>
-                            </false>
-                        </check>
-
-                        <td>{{ @member['interests'] }}</td>
                     </tr>
 
-                </repeat>
+                <!--</repeat>-->
                 </tbody>
             </table>
 

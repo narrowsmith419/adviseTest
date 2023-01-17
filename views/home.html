@@ -14,13 +14,55 @@
             <a class="btn btn-info mb-3" href="schedule" >Create New</a>
         </div>
 
+        <div class="col-sm-12 text-center ">
+
+            <!--<form action="#" method="post" class="text-left row">-->
+
+                <!--<div class="col-sm-6 text-center mx-auto">
+
+                    <label class="font-weight-bold form-label" for="reToken">Token#</label>
+                    <input class="form-control" type="text" name="reToken" id="reToken" value="{{ @token }}"
+                               aria-describedby="reToken">
+
+                </div>-->
+                <!-- button-->
+                <!--<div class="col-sm-6 text-right mt-2 mt-auto">
+                    <input class="form-control btn btn-info mb-3"
+                           type="submit" value="View Plan">
+                </div>-->
+
+            <!--</form>-->
+
+            <label>Enter a token#: <input type="text" id="user-input"></label>
+            <button id="pet">Lookup</button>
+            <div class="retrieveSchedule" id="result"></div>
+
+
+
+        </div>
 
     </div>
 
 </div>
 <!-- Optional JavaScript -->
+
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<script>
+    <!--jquery language, takes in an event, and a function-->
+    $("#user-input").on('keyup',function() {
+
+        let token = $("#user-input").val();
+
+        /*to get the current element*/
+        $("#result").load("schedule-finder.php", { num: token });
+
+        /*when clicked change button text to ouch*/
+        $("#pet").html("button changed!");
+    });
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>

@@ -1,6 +1,6 @@
 <?php
 
-//  328/dating/controller/controller.php
+//  328/adviseTest/controller/controller.php
 
 class Controller
 {
@@ -13,7 +13,63 @@ class Controller
 
     function home()
     {
+        //Initialize input variables
+        $token = "";
+        $fall = "";
+        $fallText = "";
+        $winter = "";
+        $winterText ="";
+        $spring = "";
+        $springText = "";
+        $summer = "";
+        $summerText = "";
+
+
+        //if the form has been posted
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Initialize input variables
+            $token = $_POST['token'];
+            $fall = $_POST['fall'];
+            $fallText = $_POST['fallText'];
+            $winter = $_POST['winter'];
+            $winterText = $_POST['winterText'];
+            $spring = $_POST['spring'];
+            $springText = $_POST['springText'];
+            $summer = $_POST['summer'];
+            $summerText = $_POST['summerText'];
+
+            //instantiate schedule object
+            $_SESSION['schedule'] = new Schedule();
+
+            //Add the data to the session variable
+            $_SESSION['schedule']->setToken($token);
+            $_SESSION['schedule']->setFall($fall);
+            $_SESSION['schedule']->setFallText($fallText);
+            $_SESSION['schedule']->setWinter($winter);
+            $_SESSION['schedule']->setWinterText($winterText);
+            $_SESSION['schedule']->setSpring($spring);
+            $_SESSION['schedule']->setSpringText($springText);
+            $_SESSION['schedule']->setSummer($summer);
+            $_SESSION['schedule']->setSummerText($summerText);
+
+            //view results on admin (need to adjust this to populate summary instead)
+            if (empty($this->_f3->get('errors'))) {
+                $this->_f3->reroute('admin');
+            }
+        }
+
+        $this->_f3->set('token', $token);
+        $this->_f3->set('fall', $fall);
+        $this->_f3->set('fallText', $fallText);
+        $this->_f3->set('winter', $winter);
+        $this->_f3->set('winterText', $winterText);
+        $this->_f3->set('spring', $spring);
+        $this->_f3->set('springText', $springText);
+        $this->_f3->set('summer', $summer);
+        $this->_f3->set('summerText', $summerText);
+
         $view = new Template();
+
         echo $view->render('views/home.html');
     }
 
@@ -43,230 +99,46 @@ class Controller
             $summer = $_POST['summer'];
             $summerText = $_POST['summerText'];
 
+            //instantiate schedule object
+            $_SESSION['schedule'] = new Schedule();
 
-            //Validate the data
-            if(Validator::validName($fname)) {
+            //Add the data to the session variable
+            $_SESSION['schedule']->setToken($token);
+            $_SESSION['schedule']->setFall($fall);
+            $_SESSION['schedule']->setFallText($fallText);
+            $_SESSION['schedule']->setWinter($winter);
+            $_SESSION['schedule']->setWinterText($winterText);
+            $_SESSION['schedule']->setSpring($spring);
+            $_SESSION['schedule']->setSpringText($springText);
+            $_SESSION['schedule']->setSummer($summer);
+            $_SESSION['schedule']->setSummerText($summerText);
 
-                //Add the data to the session variable
-                $_SESSION['member']->setFirstName($fname);
-            }
-            else {
-
-                //Set an error
-                $this->_f3->set('errors["fname"]', 'Please enter a valid First Name');
-            }
-
-            //Validate the data
-            if(Validator::validName($lname)) {
-
-                //Add the data to the session variable
-                $_SESSION['member']->setLastName($lname);
-            }
-            else {
-
-                //Set an error
-                $this->_f3->set('errors["lname"]', 'Please enter a valid Last Name');
-            }
-
-            //Validate the data
-            if(Validator::validAge($age)) {
-
-                //Add the data to the session variable
-                $_SESSION['member']->setAge($age);
-            }
-            else {
-
-                //Set an error
-                $this->_f3->set('errors["age"]', 'Please enter a valid Age');
-            }
-
-            if(Validator::validCoat($coat)) {
-
-                //Add the data to the session variable
-                $_SESSION['member']->setCoat($coat);
-            }
-
-            //Validate the data
-            if(Validator::validPhone($number)) {
-
-                //Add the data to the session variable
-                $_SESSION['member']->setPhone($number);
-            }
-            else {
-
-                //Set an error
-                $this->_f3->set('errors["number"]', 'Please enter a valid phone number');
-            }
-
-            //Redirect user to next page if there are no errors
+            //Redirect user to home page if there are no errors
             if (empty($this->_f3->get('errors'))) {
-                $this->_f3->reroute('profile');
+                $this->_f3->reroute('summary');
             }
 
         }
 
-        $this->_f3->set('fname', $fname);
-        $this->_f3->set('lname', $lname);
-        $this->_f3->set('userCoat', $coat);
-        $this->_f3->set('coats', DataLayer::getCoat());
-        $this->_f3->set('age', $age);
-        $this->_f3->set('number', $number);
+        $this->_f3->set('token', $token);
+        $this->_f3->set('fall', $fall);
+        $this->_f3->set('fallText', $fallText);
+        $this->_f3->set('winter', $winter);
+        $this->_f3->set('winterText', $winterText);
+        $this->_f3->set('spring', $spring);
+        $this->_f3->set('springText', $springText);
+        $this->_f3->set('summer', $summer);
+        $this->_f3->set('summerText', $summerText);
 
         $view = new Template();
 
         echo $view->render('views/schedule.html');
     }
 
-    function profile()
-    {
-        //Initialize input variables
-        $email = "";
-        $seekCoat = "";
-        $biography = "";
-        $state = "";
-
-        //if the form has been posted
-        if($_SERVER['REQUEST_METHOD'] == 'POST')
-        {
-            $email = $_POST['email'];
-
-            //add data to the session variable
-            $_SESSION['state'] = $_POST['state'];
-
-            /*maybe*/
-            $state = $_POST['state'];
-            $_SESSION['member']->setState($state);
-
-            /*$_SESSION['biography'] = $_POST['biography'];*/
-            $seekCoat = $_POST['seekCoat'];
-            $biography = $_POST['biography'];
-
-            //Validate the data
-            if(Validator::validEmail($email)) {
-
-                //Add the data to the session variable
-                $_SESSION['member']->setEmail($email);
-
-            }
-            else {
-
-                //Set an error
-                $this->_f3->set('errors["email"]', 'Please enter a valid Email');
-            }
-
-            if(Validator::validCoat($seekCoat)) {
-
-                //Add the data to the session variable
-                $_SESSION['member']->setSeekCoat($seekCoat);
-
-            }
-
-            if(strlen($biography) > 1){
-
-                //Add the data to the session variable
-                $_SESSION['member']->setBio($biography);
-
-            }
-
-
-            //Redirect user to next page if there are no errors
-            //this is where we check if user is premium or not
-
-            if (empty($this->_f3->get('errors'))) {
-
-                if($_SESSION['member'] instanceof PremiumMember) {
-                    $this->_f3->reroute('interests');
-                }
-                else{
-                    $this->_f3->reroute('summary');
-                }
-            }
-
-        }
-
-        $this->_f3->set('email', $email);
-        $this->_f3->set('states', DataLayer::getStates());
-        $this->_f3->set('userCoat', $seekCoat);
-        $this->_f3->set('coats', DataLayer::getCoat());
-        $this->_f3->set('biography', $biography);
-
-        $view = new Template();
-
-        echo $view->render('views/profile-info.html');
-
-    }
-
-    function interests()
-    {
-        //Get the interests from the model and add to F3 hive
-        $this->_f3->set('in', DataLayer::getIndoor());
-        $this->_f3->set('out', DataLayer::getOutdoor());
-
-        //if the form has been posted
-        if($_SERVER['REQUEST_METHOD'] == 'POST')
-        {
-
-            //Add the data to the session variable
-            //If indoor interests were selected
-            if (isset($_POST['in'])) {
-
-                $in = $_POST['in'];
-
-                //If interests are valid
-                if (Validator::validIndoor($in)) {
-
-                    $_SESSION['member']->setInDoorInterests($in);
-
-                }
-                else {
-                    $this->_f3->set("errors['ins']", "Invalid selection");
-                }
-            }
-            else {
-
-                $in = "No indoor interests selected";
-            }
-
-            //Add the data to the session variable
-            //If outdoor interests were selected
-            if (isset($_POST['out'])) {
-
-                $out = $_POST['out'];
-
-                //If interests are valid
-                if (Validator::validOutDoor($out)) {
-
-                    $_SESSION['member']->setOutdoorInterests($out);
-                }
-                else {
-                    $this->_f3->set("errors['outs']", "Invalid selection");
-                }
-            }
-            else {
-                $out = "No outdoor interests selected";
-            }
-
-            //Redirect user to summary page
-            if (empty($this->_f3->get('errors'))) {
-                $_SESSION['in'] = $in;
-                $_SESSION['out'] = $out;
-                $this->_f3->reroute('summary');
-            }
-
-        }
-
-        $view = new Template();
-
-        echo $view->render('views/interests.html');
-
-    }
-
-
-
     function summary()
     {
 
-        $GLOBALS['dataLayer']->insertMember($_SESSION['member']);
+        $GLOBALS['dataLayer']->insertSchedule($_SESSION['schedule']);
 
         $view = new Template();
         echo $view->render('views/summary.html');
@@ -278,12 +150,16 @@ class Controller
     function admin()
     {
 
-        //Get the data from the model
-        $members = $GLOBALS['dataLayer']->getMembers();
-        $this->_f3->set('members', $members);
+        //Get the single schedule data from the model by schedule object token
+        $schedule = $GLOBALS['dataLayer']->getSchedule($_SESSION['schedule']);
+
+        $this->_f3->set('schedule', $schedule);
 
         $view = new Template();
         echo $view->render('views/admin.html');
+
+        //Clear the session data
+        session_destroy();
     }
 
 

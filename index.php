@@ -20,11 +20,11 @@ $con = new Controller($f3);
 //instantiate new data layer object
 $dataLayer = new DataLayer();
 
-//instantiate new member object
-$member = new Member();
+//instantiate new schedule object
+$schedule = new Schedule();
 
 //define default route
-$f3->route('GET /', function(){
+$f3->route('GET|POST /', function($f3){
 
     $GLOBALS['con']->home();
 
@@ -34,20 +34,6 @@ $f3->route('GET /', function(){
 $f3->route('GET|POST /schedule', function($f3){
 
     $GLOBALS['con']->schedule();
-
-});
-
-//define profile route
-$f3->route('GET|POST /profile', function($f3){
-
-    $GLOBALS['con']->profile();
-
-});
-
-//define interests route for premium member
-$f3->route('GET|POST /interests', function($f3){
-
-    $GLOBALS['con']->interests();
 
 });
 

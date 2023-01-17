@@ -15,6 +15,16 @@ body{
     border-color: lightgray;
 }
 
+.tokenStyle{
+    font-size: 1.5em;
+    color: #003bd2;
+    background-color: #b6b3b3;
+}
+
+.tokenInput, .retrieveSchedule{
+    display: none;
+}
+
 .fallBox, .winterBox, .springBox, .summerBox{
 
     border-style: solid;

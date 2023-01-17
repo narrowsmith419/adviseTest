@@ -4,52 +4,39 @@
 
     <div class="row">
 
-        <div class="col-sm-6 text-left" >
-            <div class="container mt-2" id="box">
-                <p class="mt-1">Name: {{ @SESSION.member->getFirstName() }} {{ @SESSION.member->getLastName() }}</p>
-                <hr/>
-                <p>Coat Type: {{ @SESSION.member->getCoat() }}</p>
-                <hr/>
-                <p>Age: {{ @SESSION.member->getAge() }}</p>
-                <hr/>
-                <p>Phone: {{ @SESSION.member->getPhone() }}</p>
-                <hr/>
-                <p>Email: {{ @SESSION.member->getEmail() }}</p>
-                <hr/>
-                <p>State: {{ @SESSION.member->getState() }}</p>
-                <hr/>
-                <p>Seeking: {{ @SESSION.member->getSeekCoat() }}</p>
-                <hr/>
-                <check if=" {{ @SESSION.member instanceOf premiumMember }} ">
-                    <p>Interests: {{ @SESSION.member->inDoorToString() }}  {{ @SESSION.member->outDoorToString() }}</p>
-                </check>
+        <div class="col-sm-9 text-left mx-auto" >
 
+            <div class="container mt-2" id="box">
+                <h2> Schedule Summary </h2>
+                <p class="mt-1">Token: {{ @SESSION.schedule->getToken() }} </p>
+                <hr/>
+                <p>Fall Classes: {{ @SESSION.schedule->getFall() }}</p>
+                <hr/>
+                <p>Fall Notes: {{ @SESSION.schedule->getFallText() }}</p>
+                <hr/>
+                <p>Winter Classes: {{ @SESSION.schedule->getWinter() }}</p>
+                <hr/>
+                <p>Winter Notes: {{ @SESSION.schedule->getWinterText() }}</p>
+                <hr/>
+                <p>Spring Classes: {{ @SESSION.schedule->getSpring() }}</p>
+                <hr/>
+                <p>Spring Notes: {{ @SESSION.schedule->getSpringText() }}</p>
+                <hr/>
+                <p>Summer Classes: {{ @SESSION.schedule->getSummer() }}</p>
+                <hr/>
+                <p>Summer Notes: {{ @SESSION.schedule->getSummerText() }}</p>
             </div>
         </div>
 
-        <div class="col-sm-6 text-right mt-2">
-                <img src="images/catshape.jpeg" class="img-fluid" alt="Picture of silhouette of cat">
-        </div>
-
-        <div class="col-sm-6 ">
-            <p></p>
-        </div>
-
-        <div class="col-sm-6 ">
-
-            <p class="lead mb-0">Biography</p><br>
-            <p class="mb-4">{{ @SESSION.member->getBio() }}</p>
-
-        </div>
 
         <!-- button-->
         <div class="col-sm-4 col-lg-5 text-left">
             <a></a>
         </div>
         <div class="col-sm-4 col-lg-2 text-right mt-2">
-            <input class="form-control btn btn-info mb-4"
-                   type="submit" value="Contact Me!">
+            <a class="btn btn-info mb-3" href="home" > Home </a>
         </div>
+
         <div class="col-sm-4 col-lg-5 text-right">
             <a></a>
         </div>
