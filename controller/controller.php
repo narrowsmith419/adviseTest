@@ -16,25 +16,53 @@ class Controller
 
         //Initialize input variables
         $token = "";
+        $fall = "";
+        $fallText = "";
+        $winter = "";
+        $winterText ="";
+        $spring = "";
+        $springText = "";
+        $summer = "";
+        $summerText = "";
+        $date = "";
 
         //if the token field has been posted
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Initialize input variables
             $token = $_POST['token'];
+            $fall = $_POST['fall'];
+            $fallText = $_POST['fallText'];
+            $winter = $_POST['winter'];
+            $winterText = $_POST['winterText'];
+            $spring = $_POST['spring'];
+            $springText = $_POST['springText'];
+            $summer = $_POST['summer'];
+            $summerText = $_POST['summerText'];
+            $date = $_POST['date'];
 
             //instantiate schedule object
             $_SESSION['reSchedule'] = new Schedule();
 
             //Add the token number to the session variable
             $_SESSION['reSchedule']->setToken($token);
+            $_SESSION['reSchedule']->setFall($fall);
+            $_SESSION['reSchedule']->setFallText($fallText);
+            $_SESSION['reSchedule']->setWinter($winter);
+            $_SESSION['reSchedule']->setWinterText($winterText);
+            $_SESSION['reSchedule']->setSpring($spring);
+            $_SESSION['reSchedule']->setSpringText($springText);
+            $_SESSION['reSchedule']->setSummer($summer);
+            $_SESSION['reSchedule']->setSummerText($summerText);
+            $_SESSION['reSchedule']->setDate($date);
 
-            //send user to schedulePlan page
+            //send user to editSchedule page
             if (empty($this->_f3->get('errors'))) {
                 $this->_f3->reroute('editSchedule');
             }
         }
 
         $this->_f3->set('token', $token);
+        $this->_f3->set('date', $date);
 
         $view = new Template();
 
