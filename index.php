@@ -11,7 +11,6 @@ require_once('vendor/autoload.php');
 
 //start session
 session_start();
-//edited var_dump($_SESSION);
 
 //Create an instance of the Base class
 $f3 = Base::instance();
@@ -34,6 +33,13 @@ $f3->route('GET|POST /', function($f3){
 $f3->route('GET|POST /schedule', function($f3){
 
     $GLOBALS['con']->schedule();
+
+});
+
+//define editSchedule planner route
+$f3->route('GET|POST /editSchedule', function($f3){
+
+    $GLOBALS['con']->editSchedule();
 
 });
 

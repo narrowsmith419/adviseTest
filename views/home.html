@@ -34,7 +34,7 @@
             <!--</form>-->
 
             <label>Enter a token#: <input type="text" id="user-input"></label>
-            <button id="pet">Lookup</button>
+            <button id="lookup">Lookup</button>
             <div class="retrieveSchedule" id="result"></div>
 
 
@@ -59,7 +59,7 @@
         $("#result").load("schedule-finder.php", { num: token });
 
         /*when clicked change button text to ouch*/
-        $("#pet").html("button changed!");
+        $("#lookup").html("button changed!");
     });
 </script>
 

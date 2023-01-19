@@ -16,9 +16,6 @@ class DataLayer
             $this->_dbh = new PDO (DB_DSN, DB_USERNAME, DB_PASSWORD);
             echo "Connection to database successful!";
 
-            echo'<pre>';
-            var_dump($_SESSION);
-            echo'</pre>';
 
         } catch (PDOException $e) {
             echo "Error connecting to DB " . $e->getMessage();

@@ -1,0 +1,107 @@
+<include href="views/header.html"></include>
+
+<div class="container mt-4 mb-5" id="main">
+
+    <form action="#" method="post" class="text-center row">
+
+        <div class="col-sm-5 text-center mx-auto">
+            <h1 id="pageTitle">Create a Plan</h1>
+
+            <div class="tokenStyle">
+                <span >Token #</span>
+                <span id="tokenDisplay">{{ @token }}</span>
+                <input class="form-control tokenInput" type="text" name="token" id="token" value=""
+                       aria-describedby="token">
+            </div>
+            <hr/>
+        </div>
+
+        <div class="col-sm-12 my-4 mx-auto text-center container">
+            <div class="row mx-auto">
+
+                <!--fall-->
+                <div class="shadow col-sm-5 text-left fallBox mx-auto">
+
+                    <label class="font-weight-bold form-label" for="fall">FALL</label>
+                    <!-- Display an error if there is one -->
+                    <check if="{{ isset(@errors['fname']) }}">
+                        <span class="err font-weight-bold">{{ @errors['fall'] }}</span></check>
+                    <input class="form-control" type="text" name="fall" id="fall" value="{{ @fall }}"
+                           aria-describedby="fall">
+                    <textarea class="form-control my-2 pt-1 text-left" id="fallText" name="fallText"
+                              rows="6">Notes...{{ @fallText }}</textarea>
+
+                </div>
+
+                <!--winter-->
+                <div class="shadow col-sm-5 text-left winterBox mx-auto">
+
+                    <label class="font-weight-bold form-label" for="winter">WINTER</label>
+                    <!-- Display an error if there is one -->
+                    <check if="{{ isset(@errors['fname']) }}">
+                        <span class="err font-weight-bold">{{ @errors['winter'] }}</span></check>
+                    <input class="form-control" type="text" name="winter" id="winter" value="{{ @winter }}"
+                           aria-describedby="winter">
+                    <textarea class="form-control my-2 pt-1 text-left" id="winterText" name="winterText"
+                              rows="6">Notes...{{ @winterText }}</textarea>
+
+                </div>
+
+                <!--spring-->
+                <div class="shadow col-sm-5 text-left springBox mx-auto mt-3">
+
+                    <label class="font-weight-bold form-label" for="spring">SPRING</label>
+                    <!-- Display an error if there is one -->
+                    <check if="{{ isset(@errors['fname']) }}">
+                        <span class="err font-weight-bold">{{ @errors['spring'] }}</span></check>
+                    <input class="form-control" type="text" name="spring" id="spring" value="{{ @spring }}"
+                           aria-describedby="spring">
+                    <textarea class="form-control my-2 pt-1 text-left" id="springText" name="springText"
+                              rows="6">Notes...{{ @springText }}</textarea>
+
+                </div>
+
+                <!--summer-->
+                <div class="shadow col-sm-5 text-left summerBox mx-auto mt-3">
+
+                    <label class="font-weight-bold form-label" for="summer">SUMMER</label>
+                    <!-- Display an error if there is one -->
+                    <check if="{{ isset(@errors['fname']) }}">
+                        <span class="err font-weight-bold">{{ @errors['summer'] }}</span></check>
+                    <input class="form-control" type="text" name="summer" id="summer" value="{{ @summer }}"
+                           aria-describedby="summer">
+                    <textarea class="form-control my-2 pt-1 text-left" id="summerText" name="summerText"
+                              rows="6">Notes...{{ @summerText }}</textarea>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- button-->
+        <div class="col-sm-3 text-right mt-2 ml-auto">
+            <input class="form-control btn btn-info mb-3"
+                   type="submit" value="Submit Plan">
+        </div>
+
+    </form>
+
+</div>
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="//code.jquery.com/jquery.js"></script>
+
+
+<!-- Custom JavaScript -->
+<script src="script/script.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

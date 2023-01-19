@@ -1,6 +1,7 @@
 
 
 <?php
+session_start();
 
 $num = $_POST['num'];
 
@@ -10,6 +11,7 @@ require $_SERVER['DOCUMENT_ROOT'].'/../pdo-config.php';
 try{
     //instantiate database object
     $dbh = new PDO (DB_DSN, DB_USERNAME, DB_PASSWORD);
+    echo "message from schedule-finder.php";
 }
 catch(PDOException $e)
 {
@@ -32,11 +34,15 @@ $statement->execute();
 
 //5. Process the result (if there is one)
 if($statement->rowCount()==1){
+
     $row = $statement->fetch(PDO::FETCH_ASSOC);
     echo $row['token']."<br>".$row['fall']."<br>".$row['fallNotes']."<br>".$row['winter']."<br>".$row['winterNotes']." 
     <br>".$row['spring']."<br>".$row['springNotes']."<br>".$row['summer']."<br>".$row['summerNotes']."<br>".$row['date'];
 
-    echo "<form action='#' method='post' class='text-left row'>";
+    //session variable for token storage | NOT WORKING
+    $_SESSION['savedToken'] = $row['token'];
+
+
 
     foreach($row as $value)
         {
@@ -44,14 +50,18 @@ if($statement->rowCount()==1){
                            aria-describedby=".$value.">";
         }
 
-    echo "<div class='col-sm-6 text-right mt-2 mt-auto'>
-                    <input class='form-control btn btn-info mb-3'
-                           type='submit' value='View Plan'>
-                </div>";
-
+    //mini token form with button to post token to session object (reSchedule)
+    echo "<form action='#' method='post' class='text-center row'>";
+    echo "<br>"."<input type='text' name='token' id='token' value=".$row['token']."
+                           aria-describedby='token'>";
+    echo "<input class='btn btn-info' type='submit' value='Lookup Plan'>";
     echo "</form>";
+
 
 }
 else{
-    echo "schedule is not found";
+    echo "<br class='scheduleError'>schedule is not found</br>";
 }
+
+
+

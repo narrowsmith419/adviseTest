@@ -5,12 +5,15 @@
     <form action="#" method="post" class="text-center row">
 
         <div class="col-sm-5 text-center mx-auto">
-            <h1 id="pageTitle">Create a Plan</h1>
+
+            <h1 id="editPageTitle">Update a Plan</h1>
+
             <div class="tokenStyle">
                 <span >Token #</span>
-                <span id="tokenDisplay" type="text">{{ @token }}</span>
-                <input class="form-control tokenInput" type="text" name="token" id="token" value="{{ @token }}"
+                <span id="oldToken">{{ @SESSION.reSchedule->getToken() }}</span>
+                <input class="form-control tokenInput" type="text" name="token" id="token" value=""
                        aria-describedby="token">
+
             </div>
             <hr/>
         </div>
@@ -88,12 +91,14 @@
 
 </div>
 
-<!-- Custom JavaScript -->
-<script src="script/script.js"></script>
+
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+<script src="//code.jquery.com/jquery.js"></script>
+
+
+<!-- Custom JavaScript -->
+<script src="script/editScript.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>

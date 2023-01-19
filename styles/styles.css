@@ -21,8 +21,12 @@ body{
     background-color: #b6b3b3;
 }
 
-.tokenInput, .retrieveSchedule{
+.tokenInput{
     display: none;
+}
+
+.scheduleError{
+    color: red;
 }
 
 .fallBox, .winterBox, .springBox, .summerBox{
