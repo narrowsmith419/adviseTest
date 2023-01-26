@@ -79,8 +79,13 @@
         </div>
 
 
-        <!-- button-->
+        <!-- advisor name and button-->
         <div class="col-sm-3 text-right mt-2 ml-auto">
+            <label class="font-weight-bold form-label" for="advisor">Advisor: </label>
+            <input class="form-control" type="text" name="advisor" id="advisor" value="{{ @advisor }}"
+                   aria-describedby="advisor">
+
+            <!-- submit button -->
             <input class="form-control btn btn-info mb-3"
                    type="submit" value="Submit Plan">
         </div>

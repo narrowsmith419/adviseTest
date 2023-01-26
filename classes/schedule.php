@@ -14,12 +14,13 @@ class Schedule
     private $_summer;
     private $_summerText;
     private $_date;
+    private $_advisor;
 
     /**
      * default constructor with default values ( ="" )
      */
     public function __construct($token="", $fall="", $fallText="", $winter="", $winterText="",
-                                $spring="", $springText="", $summer="", $summerText="", $date="")
+                                $spring="", $springText="", $summer="", $summerText="", $date="", $advisor="")
     {
         $this->_token = $token;
         $this->_fall = $fall;
@@ -31,6 +32,7 @@ class Schedule
         $this->_summer = $summer;
         $this->_summerText = $summerText;
         $this->_date = $date;
+        $this->_advisor = $advisor;
     }
 
     /**
@@ -211,6 +213,24 @@ class Schedule
     public function setDate($date)
     {
         $this->_date = $date;
+    }
+
+    /**
+     * return advisor
+     * @return string
+     */
+    public function getAdvisor()
+    {
+        return $this->_advisor;
+    }
+
+    /**
+     * set advisor
+     * @param string $advisor
+     */
+    public function setAdvisor($advisor)
+    {
+        $this->_advisor = $advisor;
     }
 
 

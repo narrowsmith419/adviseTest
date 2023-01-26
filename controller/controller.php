@@ -25,6 +25,8 @@ class Controller
         $summer = "";
         $summerText = "";
         $date = "";
+        $advisor = "";
+
 
         //if the token field has been posted
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -39,6 +41,8 @@ class Controller
             $summer = $_POST['summer'];
             $summerText = $_POST['summerText'];
             $date = $_POST['date'];
+            $advisor = $_POST['advisor'];
+
 
             //instantiate schedule object
             $_SESSION['reSchedule'] = new Schedule();
@@ -54,6 +58,7 @@ class Controller
             $_SESSION['reSchedule']->setSummer($summer);
             $_SESSION['reSchedule']->setSummerText($summerText);
             $_SESSION['reSchedule']->setDate($date);
+            $_SESSION['reSchedule']->setAdvisor($advisor);
 
             //send user to editSchedule page
             if (empty($this->_f3->get('errors'))) {
@@ -71,6 +76,7 @@ class Controller
         $this->_f3->set('summer', $summer);
         $this->_f3->set('summerText', $summerText);
         $this->_f3->set('date', $date);
+        $this->_f3->set('advisor', $advisor);
 
         $view = new Template();
 
@@ -90,6 +96,7 @@ class Controller
         $springText = "";
         $summer = "";
         $summerText = "";
+        $advisor = "";
 
         //if the form has been posted
         if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -103,6 +110,7 @@ class Controller
             $springText = $_POST['springText'];
             $summer = $_POST['summer'];
             $summerText = $_POST['summerText'];
+            $advisor = $_POST['advisor'];
 
             //instantiate schedule object
             $_SESSION['schedule'] = new Schedule();
@@ -117,6 +125,7 @@ class Controller
             $_SESSION['schedule']->setSpringText($springText);
             $_SESSION['schedule']->setSummer($summer);
             $_SESSION['schedule']->setSummerText($summerText);
+            $_SESSION['schedule']->setAdvisor($advisor);
 
             //Redirect user to home page if there are no errors
             if (empty($this->_f3->get('errors'))) {
@@ -134,6 +143,7 @@ class Controller
         $this->_f3->set('springText', $springText);
         $this->_f3->set('summer', $summer);
         $this->_f3->set('summerText', $summerText);
+        $this->_f3->set('advisor', $advisor);
         $this->_f3->set('isNew', true);
 
         $view = new Template();

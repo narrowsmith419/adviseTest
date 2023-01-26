@@ -65,6 +65,7 @@ if($statement->rowCount()==1){
     echo '<input class="tokenInput" type="text" name="summer" id="summer" value="'.$row['summer'].'">';
     echo '<input class="tokenInput" type="text" name="summerText" id="summerText" value="'.$row['summerNotes'].'">';
     echo '<input class="tokenInput" type="text" name="date" id="date" value="'.$row['date'].'">';
+    echo '<input class="tokenInput" type="text" name="advisor" id="advisor" value="'.$row['advisor'].'">';
 
 
     //value field is ignoring the rest of date object after space, need to fix

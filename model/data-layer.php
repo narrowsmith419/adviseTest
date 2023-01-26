@@ -40,11 +40,12 @@ class DataLayer
         $springText = $schedule->getSpringText();
         $summer = $schedule->getSummer();
         $summerText = $schedule->getSummerText();
+        $advisor = $schedule->getAdvisor();
 
         //1. Define the query
             $sql = "INSERT INTO adviseIt (token, fall, fallNotes, winter, winterNotes, spring, springNotes,
-                      summer, summerNotes)
-                VALUES (:token, :fall, :fallText, :winter, :winterText, :spring, :springText, :summer, :summerText)";
+                      summer, summerNotes, advisor)
+                VALUES (:token, :fall, :fallText, :winter, :winterText, :spring, :springText, :summer, :summerText, :advisor)";
 
             //2. Prepare the statement
             $statement = $this->_dbh->prepare($sql);
@@ -58,6 +59,7 @@ class DataLayer
             $statement->bindParam(':springText', $springText);
             $statement->bindParam(':summer', $summer);
             $statement->bindParam(':summerText', $summerText);
+            $statement->bindParam(':advisor', $advisor);
 
 
         //4. Execute the query
