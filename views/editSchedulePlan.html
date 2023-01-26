@@ -7,7 +7,7 @@
         <div class="col-sm-5 text-center mx-auto">
 
             <h1 id="editPageTitle">Update a Plan</h1>
-            <h2>Last Updated: {{ @SESSION.reSchedule->getDate() }}</h2>
+            <span class="dateReadout">Last Updated: {{ @SESSION.reSchedule->getDate() }}</span>
 
             <div class="tokenStyle">
                 <span >Token #</span>
@@ -26,10 +26,7 @@
                 <div class="shadow col-sm-5 text-left fallBox mx-auto">
 
                     <label class="font-weight-bold form-label" for="fall">FALL</label>
-                    <!-- Display an error if there is one -->
-                    <check if="{{ isset(@errors['fname']) }}">
-                        <span class="err font-weight-bold">{{ @errors['fall'] }}</span></check>
-                    <p class="tokenInput" id="getFall"></p>
+
                     <input class="form-control" type="text" name="fall" id="fall" value="{{ @SESSION.reSchedule->getFall() }}"
                            aria-describedby="fall">
                     <textarea class="form-control my-2 pt-1 text-left" id="fallText" name="fallText"
@@ -41,9 +38,8 @@
                 <div class="shadow col-sm-5 text-left winterBox mx-auto">
 
                     <label class="font-weight-bold form-label" for="winter">WINTER</label>
-                    <!-- Display an error if there is one -->
-                    <check if="{{ isset(@errors['fname']) }}">
-                        <span class="err font-weight-bold">{{ @errors['winter'] }}</span></check>
+
+
                     <input class="form-control" type="text" name="winter" id="winter" value="{{ @SESSION.reSchedule->getWinter() }}"
                            aria-describedby="winter">
                     <textarea class="form-control my-2 pt-1 text-left" id="winterText" name="winterText"
@@ -55,9 +51,7 @@
                 <div class="shadow col-sm-5 text-left springBox mx-auto mt-3">
 
                     <label class="font-weight-bold form-label" for="spring">SPRING</label>
-                    <!-- Display an error if there is one -->
-                    <check if="{{ isset(@errors['fname']) }}">
-                        <span class="err font-weight-bold">{{ @errors['spring'] }}</span></check>
+
                     <input class="form-control" type="text" name="spring" id="spring" value="{{ @SESSION.reSchedule->getSpring() }}"
                            aria-describedby="spring">
                     <textarea class="form-control my-2 pt-1 text-left" id="springText" name="springText"
@@ -69,9 +63,7 @@
                 <div class="shadow col-sm-5 text-left summerBox mx-auto mt-3">
 
                     <label class="font-weight-bold form-label" for="summer">SUMMER</label>
-                    <!-- Display an error if there is one -->
-                    <check if="{{ isset(@errors['fname']) }}">
-                        <span class="err font-weight-bold">{{ @errors['summer'] }}</span></check>
+
                     <input class="form-control" type="text" name="summer" id="summer" value="{{ @SESSION.reSchedule->getSummer() }}"
                            aria-describedby="summer">
                     <textarea class="form-control my-2 pt-1 text-left" id="summerText" name="summerText"
@@ -100,7 +92,6 @@
 
 <!-- Custom JavaScript -->
 <script src="script/editScript.js"></script>
-<script src="script/scheduleFindScript.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

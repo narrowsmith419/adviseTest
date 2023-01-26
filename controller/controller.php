@@ -62,6 +62,14 @@ class Controller
         }
 
         $this->_f3->set('token', $token);
+        $this->_f3->set('fall', $fall);
+        $this->_f3->set('fallText', $fallText);
+        $this->_f3->set('winter', $winter);
+        $this->_f3->set('winterText', $winterText);
+        $this->_f3->set('spring', $spring);
+        $this->_f3->set('springText', $springText);
+        $this->_f3->set('summer', $summer);
+        $this->_f3->set('summerText', $summerText);
         $this->_f3->set('date', $date);
 
         $view = new Template();

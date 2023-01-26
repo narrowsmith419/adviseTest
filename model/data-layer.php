@@ -67,6 +67,51 @@ class DataLayer
         return $this->_dbh->lastInsertId();
     }
 
+    /**
+     * insertSchedule accepts a schedule object and inserts it into the DB
+     * @param $schedule Schedule object, will be a f3 'reSchedule' object
+     * @return string The token of the inserted row
+     */
+    function updateSchedule($schedule)
+    {
+        //grab parameters
+        $token = $schedule->getToken();
+        $fall = $schedule->getFall();
+        $fallText = $schedule->getFallText();
+        $winter = $schedule->getWinter();
+        $winterText = $schedule->getWinterText();
+        $spring = $schedule->getSpring();
+        $springText = $schedule->getSpringText();
+        $summer = $schedule->getSummer();
+        $summerText = $schedule->getSummerText();
+
+        //1. Define the query
+        $sql = "UPDATE adviseIt 
+                SET fall = :fall, fallNotes = :fallText, winter = :winter, winterNotes = :winterText, spring = :spring,
+                springNotes = :springText, summer = :summer, summerNotes = :summerText
+                WHERE token = :token";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        $statement->bindParam(':token', $token);
+        $statement->bindParam(':fall', $fall);
+        $statement->bindParam(':fallText', $fallText);
+        $statement->bindParam(':winter', $winter);
+        $statement->bindParam(':winterText', $winterText);
+        $statement->bindParam(':spring', $spring);
+        $statement->bindParam(':springText', $springText);
+        $statement->bindParam(':summer', $summer);
+        $statement->bindParam(':summerText', $summerText);
+
+
+        //4. Execute the query
+        $statement->execute();
+
+        //5. Process the results (get the primary key)
+        return $this->_dbh->lastInsertId();
+    }
+
 
     function getSchedule($schedule)
     {

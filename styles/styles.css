@@ -29,6 +29,10 @@ body{
     color: red;
 }
 
+.dateReadout{
+    color: darkgreen;
+}
+
 .fallBox, .winterBox, .springBox, .summerBox{
 
     border-style: solid;

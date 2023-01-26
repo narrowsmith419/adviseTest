@@ -40,46 +40,38 @@ if($statement->rowCount()==1){
 
     $dateTime = $row['date'];
 
-    echo "<p class='tokenInput' id='schedFall'>".$row['fall']."</p>";
-    echo "<p class='tokenInput' id='schedFallNotes'>".$row['fallNotes']."</p>";
-    echo "<p class='tokenInput' id='schedWinter'>".$row['winter']."</p>";
-    echo "<p class='tokenInput' id='schedWinterNotes'>".$row['winterNotes']."</p>";
-    echo "<p class='tokenInput' id='schedSpring'>".$row['spring']."</p>";
-    echo "<p class='tokenInput' id='schedSpringNotes'>".$row['springNotes']."</p>";
-    echo "<p class='tokenInput' id='schedSummer'>".$row['summer']."</p>";
-    echo "<p class='tokenInput' id='schedSummerNotes'>".$row['summerNotes']."</p>";
-    echo "<p class='tokenInput' id='schedDate'>".$row['date']."</p>";
+
+
+    /*echo "<p class='' id='schedFall'>".$row['fall']."</p>";
+    echo "<p class='' id='schedFallNotes'>".$row['fallNotes']."</p>";
+    echo "<p class='' id='schedWinter'>".$row['winter']."</p>";
+    echo "<p class='' id='schedWinterNotes'>".$row['winterNotes']."</p>";
+    echo "<p class='' id='schedSpring'>".$row['spring']."</p>";
+    echo "<p class='' id='schedSpringNotes'>".$row['springNotes']."</p>";
+    echo "<p class='' id='schedSummer'>".$row['summer']."</p>";
+    echo "<p class='' id='schedSummerNotes'>".$row['summerNotes']."</p>";
+    echo "<p class='' id='schedDate'>".$row['date']."</p>";*/
 
     //mini token form with button to post token to session object (reSchedule)
     echo "<form action='#' method='post' class='text-center'>";
 
-   /* echo "<input class='tokenInput' type='text' name='token' id='token' value=".$row['token'].">";
-    echo "<input class='tokenInput' type='text' name='fall' id='fall' value=".$row['fall'].">";
-    echo "<input class='tokenInput' type='text' name='fallText' id='fallText' value=".$row['fallNotes'].">";
-    echo "<input class='tokenInput' type='text' name='winter' id='winter' value=".$row['winter'].">";
-    echo "<input class='tokenInput' type='text' name='winterText' id='winterText' value=".$row['winterNotes'].">";
-    echo "<input class='tokenInput' type='text' name='spring' id='spring' value=".$row['spring'].">";
-    echo "<input class='tokenInput' type='text' name='springText' id='springText' value=".$row['springNotes'].">";
-    echo "<input class='tokenInput' type='text' name='summer' id='summer' value=".$row['summer'].">";
-    echo "<input class='tokenInput' type='text' name='summerText' id='summerText' value=".$row['summerNotes'].">";*/
+    echo '<input class="tokenInput" type="text" name="token" id="token" value="'.$row['token'].'">';
+    echo '<input class="tokenInput" type="text" name="fall" id="fall" value="'.$row['fall'].'">';
+    echo '<input class="tokenInput" type="text" name="fallText" id="fallText" value="'.$row['fallNotes'].'">';
+    echo '<input class="tokenInput" type="text" name="winter" id="winter" value="'.$row['winter'].'">';
+    echo '<input class="tokenInput" type="text" name="winterText" id="winterText" value="'.$row['winterNotes'].'">';
+    echo '<input class="tokenInput" type="text" name="spring" id="spring" value="'.$row['spring'].'">';
+    echo '<input class="tokenInput" type="text" name="springText" id="springText" value="'.$row['springNotes'].'">';
+    echo '<input class="tokenInput" type="text" name="summer" id="summer" value="'.$row['summer'].'">';
+    echo '<input class="tokenInput" type="text" name="summerText" id="summerText" value="'.$row['summerNotes'].'">';
+    echo '<input class="tokenInput" type="text" name="date" id="date" value="'.$row['date'].'">';
 
-    echo "<input class='tokenInput' type='text' name='token' id='token' value=''>";
-    echo "<input class='tokenInput' type='text' name='fall' id='fall' value=''>";
-    echo "<input class='tokenInput' type='text' name='fallText' id='fallText' value=''>";
-    echo "<input class='tokenInput' type='text' name='winter' id='winter' value=''>";
-    echo "<input class='tokenInput' type='text' name='winterText' id='winterText' value=''>";
-    echo "<input class='tokenInput' type='text' name='spring' id='spring' value=''>";
-    echo "<input class='tokenInput' type='text' name='springText' id='springText' value=''>";
-    echo "<input class='tokenInput' type='text' name='summer' id='summer' value=''>";
-    echo "<input class='tokenInput' type='text' name='summerText' id='summerText' value=''>";
 
     //value field is ignoring the rest of date object after space, need to fix
-    echo "<input class='tokenInput' type='text' name='date' id='date' value=''>";
+    /*echo "<input class='tokenInput' type='text' name='date' id='date' value=''>";*/
 
     echo "<input class='btn btn-success m-auto' type='submit' value='Lookup Plan'>";
     echo "</form>";
-
-
 
 
 }
