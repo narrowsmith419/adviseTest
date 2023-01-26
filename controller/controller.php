@@ -134,6 +134,7 @@ class Controller
         $this->_f3->set('springText', $springText);
         $this->_f3->set('summer', $summer);
         $this->_f3->set('summerText', $summerText);
+        $this->_f3->set('isNew', true);
 
         $view = new Template();
 
@@ -198,6 +199,7 @@ class Controller
         $this->_f3->set('springText', $springText);
         $this->_f3->set('summer', $summer);
         $this->_f3->set('summerText', $summerText);
+        $this->_f3->set('isNew', false);
 
         $view = new Template();
 
@@ -208,7 +210,15 @@ class Controller
     function summary()
     {
 
-        $GLOBALS['dataLayer']->insertSchedule($_SESSION['schedule']);
+        //if new schedule, insert into db, else update
+        if($this->_f3->get('isNew'))
+        {
+            $GLOBALS['dataLayer']->insertSchedule($_SESSION['schedule']);
+        }
+        else
+        {
+            $GLOBALS['dataLayer']->updateSchedule($_SESSION['schedule']);
+        }
 
         $view = new Template();
         echo $view->render('views/summary.html');
