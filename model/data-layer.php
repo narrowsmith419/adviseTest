@@ -147,7 +147,28 @@ class DataLayer
 
         //5. Process the results (get the primary key)
         $result = $statement->fetch(PDO::FETCH_ASSOC);
-        echo $result['token'];
+        /*echo $result['token'];*/
+
+        return $result;
+    }
+
+    function getAllSchedules()
+    {
+
+
+        //1. Define the query
+        $sql = "SELECT * FROM adviseIt ORDER BY date";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameters
+
+        //4. Execute the query
+        $statement->execute();
+
+        //5. Process the results (get the primary key)
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $result;
     }

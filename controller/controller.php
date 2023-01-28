@@ -230,8 +230,6 @@ class Controller
             $GLOBALS['dataLayer']->updateSchedule($_SESSION['schedule']);
         }
 
-        /*$GLOBALS['dataLayer']->insertSchedule($_SESSION['schedule']);*/
-
         $view = new Template();
         echo $view->render('views/summary.html');
 
@@ -242,10 +240,9 @@ class Controller
     function admin()
     {
 
-        //Get the single schedule data from the model by schedule object token
-        $schedule = $GLOBALS['dataLayer']->getSchedule($_SESSION['schedule']);
-
-        $this->_f3->set('schedule', $schedule);
+        //get all data from the model
+        $schedules = $GLOBALS['dataLayer']->getAllSchedules();
+        $this->_f3->set('schedules', $schedules);
 
         $view = new Template();
         echo $view->render('views/admin.html');
