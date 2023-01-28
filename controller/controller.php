@@ -126,6 +126,7 @@ class Controller
             $_SESSION['schedule']->setSummer($summer);
             $_SESSION['schedule']->setSummerText($summerText);
             $_SESSION['schedule']->setAdvisor($advisor);
+            $_SESSION['schedule']->setIsNew(true);
 
             //Redirect user to home page if there are no errors
             if (empty($this->_f3->get('errors'))) {
@@ -144,7 +145,6 @@ class Controller
         $this->_f3->set('summer', $summer);
         $this->_f3->set('summerText', $summerText);
         $this->_f3->set('advisor', $advisor);
-        $this->_f3->set('isNew', true);
 
         $view = new Template();
 
@@ -192,6 +192,7 @@ class Controller
             $_SESSION['schedule']->setSpringText($springText);
             $_SESSION['schedule']->setSummer($summer);
             $_SESSION['schedule']->setSummerText($summerText);
+            $_SESSION['schedule']->setIsNew(false);
 
             //Redirect user to home page if there are no errors
             if (empty($this->_f3->get('errors'))) {
@@ -209,7 +210,6 @@ class Controller
         $this->_f3->set('springText', $springText);
         $this->_f3->set('summer', $summer);
         $this->_f3->set('summerText', $summerText);
-        $this->_f3->set('isNew', false);
 
         $view = new Template();
 
@@ -221,7 +221,7 @@ class Controller
     {
 
         //if new schedule, insert into db, else update
-        if($this->_f3->get('isNew'))
+        if($_SESSION['schedule']->getIsNew())
         {
             $GLOBALS['dataLayer']->insertSchedule($_SESSION['schedule']);
         }
@@ -229,6 +229,8 @@ class Controller
         {
             $GLOBALS['dataLayer']->updateSchedule($_SESSION['schedule']);
         }
+
+        /*$GLOBALS['dataLayer']->insertSchedule($_SESSION['schedule']);*/
 
         $view = new Template();
         echo $view->render('views/summary.html');

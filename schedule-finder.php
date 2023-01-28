@@ -35,22 +35,8 @@ $statement->execute();
 if($statement->rowCount()==1){
 
     $row = $statement->fetch(PDO::FETCH_ASSOC);
-    /*echo $row['token']."<br>".$row['fall']."<br>".$row['fallNotes']."<br>".$row['winter']."<br>".$row['winterNotes']."
-    <br>".$row['spring']."<br>".$row['springNotes']."<br>".$row['summer']."<br>".$row['summerNotes']."<br>".$row['date'];*/
 
     $dateTime = $row['date'];
-
-
-
-    /*echo "<p class='' id='schedFall'>".$row['fall']."</p>";
-    echo "<p class='' id='schedFallNotes'>".$row['fallNotes']."</p>";
-    echo "<p class='' id='schedWinter'>".$row['winter']."</p>";
-    echo "<p class='' id='schedWinterNotes'>".$row['winterNotes']."</p>";
-    echo "<p class='' id='schedSpring'>".$row['spring']."</p>";
-    echo "<p class='' id='schedSpringNotes'>".$row['springNotes']."</p>";
-    echo "<p class='' id='schedSummer'>".$row['summer']."</p>";
-    echo "<p class='' id='schedSummerNotes'>".$row['summerNotes']."</p>";
-    echo "<p class='' id='schedDate'>".$row['date']."</p>";*/
 
     //mini token form with button to post token to session object (reSchedule)
     echo "<form action='#' method='post' class='text-center'>";
@@ -69,8 +55,6 @@ if($statement->rowCount()==1){
 
 
     //value field is ignoring the rest of date object after space, need to fix
-    /*echo "<input class='tokenInput' type='text' name='date' id='date' value=''>";*/
-
     echo "<input class='btn btn-success m-auto' type='submit' value='Lookup Plan'>";
     echo "</form>";
 

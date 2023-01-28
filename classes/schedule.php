@@ -15,6 +15,7 @@ class Schedule
     private $_summerText;
     private $_date;
     private $_advisor;
+    private $_isNew;
 
     /**
      * default constructor with default values ( ="" )
@@ -231,6 +232,24 @@ class Schedule
     public function setAdvisor($advisor)
     {
         $this->_advisor = $advisor;
+    }
+
+    /**
+     * return isNew
+     * @return boolean
+     */
+    public function getIsNew()
+    {
+        return $this->_isNew;
+    }
+
+    /**
+     * set isNew
+     * @param boolean
+     */
+    public function setIsNew($isNew)
+    {
+        $this->_isNew = $isNew;
     }
 
 

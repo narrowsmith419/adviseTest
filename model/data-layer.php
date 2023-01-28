@@ -65,6 +65,17 @@ class DataLayer
         //4. Execute the query
         $statement->execute();
 
+        //to be deleted//
+        /*function debug_to_console($data) {
+            $output = $data;
+            if (is_array($output))
+                $output = implode(',', $output.to);
+
+            echo "<script>console.log('Debug Objects: " . $output . "');</script>";
+        }
+        debug_to_console($schedule);
+        debug_to_console($statement);*/
+
         //5. Process the results (get the primary key)
         return $this->_dbh->lastInsertId();
     }
