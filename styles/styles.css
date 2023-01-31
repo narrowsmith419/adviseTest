@@ -73,12 +73,6 @@ body{
 
 }
 
-#quotes{
-
-    /*border-style: solid;
-    border-width: 1.25px;
-    border-color: darkgray;*/
-}
 
 img{
     border-radius: 0.5rem;
@@ -93,4 +87,13 @@ img{
 
 .err{
     color: red;
+}
+
+tbody td{
+    padding: 30px;
+}
+
+tbody tr:nth-child(odd){
+    background-color: #b6b3b3;
+    color: white;
 }
