@@ -97,3 +97,8 @@ tbody tr:nth-child(odd){
     background-color: #b6b3b3;
     color: white;
 }
+
+.testCreds{
+    color: #b6b3b3;
+    font-style: italic;
+}
