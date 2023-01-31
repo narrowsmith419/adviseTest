@@ -19,7 +19,7 @@ $con = new Controller($f3);
 //instantiate new data layer object
 $dataLayer = new DataLayer();
 
-//instantiate new schedule object
+//instantiate new schedule and Admin object
 $schedule = new Schedule();
 
 //define default route
@@ -54,6 +54,20 @@ $f3->route('GET /summary', function(){
 $f3->route('GET /admin', function(){
 
     $GLOBALS['con']->admin();
+
+});
+
+//define login route
+$f3->route('GET|POST /login', function(){
+
+    $GLOBALS['con']->login();
+
+});
+
+//define errorAdmin route
+$f3->route('GET /errorAdmin', function(){
+
+    $GLOBALS['con']->errorAdmin();
 
 });
 

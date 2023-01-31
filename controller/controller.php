@@ -27,6 +27,8 @@ class Controller
         $date = "";
         $advisor = "";
 
+        //test
+        $_SESSION['admin'] = new Schedule();
 
         //if the token field has been posted
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -237,18 +239,81 @@ class Controller
         session_destroy();
     }
 
+    function login()
+    {
+
+        //if user is already logged in, send to admin page
+        if ($_SESSION['admin']->getFall() != null)
+        {
+            $this->_f3->reroute('admin');
+        }
+
+        //Initialize input variables
+        $username = "";
+        $password = "";
+
+
+        //if the form has been posted
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            //instantiate admin object
+            $_SESSION['admin'] = new Schedule();
+
+            //require credentials file
+            require('creds.php');
+
+            //if username is in array and passwords match
+            if (array_key_exists($username, $logins) && $password == $logins[$username]) {
+
+                //record username into sessions array || might be able to delete this
+                $_SESSION['username'] = $username;
+
+                //Add the data to the session variable
+                $_SESSION['admin']->setFall($username);
+                $_SESSION['admin']->setFallText($password);
+
+                //Redirect user to admin page if there are no errors
+                if (empty($this->_f3->get('errors'))) {
+                    $this->_f3->reroute('admin');
+                }
+            }
+            else
+            {
+                $this->_f3->reroute('errorAdmin');
+            }
+
+        }
+
+        $view = new Template();
+        echo $view->render('views/login.html');
+    }
+
+    function errorAdmin()
+    {
+        $view = new Template();
+        echo $view->render('views/errorAdmin.html');
+    }
+
     function admin()
     {
+        //if user is not logged in, send to error page
+        if ($_SESSION['admin']->getFall() == null)
+        {
+            $this->_f3->reroute('errorAdmin');
+        }
 
         //get all data from the model
         $schedules = $GLOBALS['dataLayer']->getAllSchedules();
         $this->_f3->set('schedules', $schedules);
 
+
         $view = new Template();
         echo $view->render('views/admin.html');
 
         //Clear the session data
-        session_destroy();
+        //session_destroy();
     }
 
 
