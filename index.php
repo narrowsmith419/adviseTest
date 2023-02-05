@@ -30,14 +30,14 @@ $f3->route('GET|POST /', function($f3){
 });
 
 //define schedule planner route
-$f3->route('GET|POST /schedule', function($f3){
+$f3->route('GET|POST /schedule*', function($f3){
 
     $GLOBALS['con']->schedule();
 
 });
 
 //define editSchedule planner route
-$f3->route('GET|POST /editSchedule', function($f3){
+$f3->route('GET|POST /editSchedule*', function($f3){
 
     $GLOBALS['con']->editSchedule();
 

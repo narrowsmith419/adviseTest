@@ -11,6 +11,12 @@ class Controller
         $this->_f3 = $f3;
     }
 
+    function uniqueToken()
+    {
+        $uniqueToken = "224466";
+        return $uniqueToken;
+    }
+
     function home()
     {
 
@@ -32,6 +38,7 @@ class Controller
 
         //if the token field has been posted
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
             //Initialize input variables
             $token = $_POST['token'];
             $fall = $_POST['fall'];
@@ -62,9 +69,13 @@ class Controller
             $_SESSION['reSchedule']->setDate($date);
             $_SESSION['reSchedule']->setAdvisor($advisor);
 
+            //test
+
+            $_SESSION['newToken'] = $token;
+
             //send user to editSchedule page
             if (empty($this->_f3->get('errors'))) {
-                $this->_f3->reroute('editSchedule');
+                $this->_f3->reroute('editSchedule'.'_token='.$token);
             }
         }
 
@@ -89,6 +100,7 @@ class Controller
     {
 
         //Initialize input variables
+
         $token = "";
         $fall = "";
         $fallText = "";
